@@ -8,7 +8,6 @@
     <title>Guardian od Ætheria</title>
 </head>
 <body>
-
     <section class="home" id="home">
         <div class="overlay"></div>
         <nav class="nav">
@@ -300,7 +299,7 @@
         <div class="contact-container">
             <div class="contactContainer">
                 <form class="contact-form" id="contactForm">
-                    <h3 class="form-title">Contactz les Gardiens des Runes</h3>
+                    <h3 class="form-title">Contactez les Gardiens des Runes</h3>
     
                     <div class="rune-selector">
                         <div class="rune-option fire" data-element="feu">🔥<br>Feu</div>
@@ -349,52 +348,7 @@
             </div>
         </div>
     </section>
-
-    <script>
-         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            const runeOptions = document.querySelectorAll('.rune-option');
-            
-            const previewName = document.querySelector('.preview-name');
-            const previewEmail = document.querySelector('.preview-email');
-            const previewMessage = document.querySelector('.preview-message');
-            const previewElement = document.querySelector('.preview-element');
-
-            // Update preview on input changes
-            nameInput.addEventListener('input', () => {
-                previewName.textContent = nameInput.value;
-            });
-
-            emailInput.addEventListener('input', () => {
-                previewEmail.textContent = emailInput.value;
-            });
-
-            messageInput.addEventListener('input', () => {
-                previewMessage.textContent = messageInput.value;
-            });
-
-            // Handle rune selection
-            runeOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    runeOptions.forEach(opt => opt.classList.remove('selected'));
-                    option.classList.add('selected');
-                    previewElement.textContent = option.firstChild.textContent;
-                });
-            });
-
-            // Prevent form submission for demo
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                document.getElementById('successMessage').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 3000);
-            });
-        });
-    </script>
+    
     <script src="/assets/js/script.js"></script>
 </body>
 </html>

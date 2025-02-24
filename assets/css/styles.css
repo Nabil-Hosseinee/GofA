@@ -54,7 +54,6 @@ a {
     text-decoration: none;
 }
 
-
 .buttonsContainer {
     min-height: 15vh;
     display: none;
@@ -88,6 +87,32 @@ a {
 
 .trBtn {
     background-color: var(--violet);
+}
+
+/* Style du sélecteur de langue */
+.language-switch {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.language-switch button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.language-switch img {
+    width: 30px;
+    height: 20px;
+}
+
+/* Cacher le widget Google Translate par défaut */
+#google_translate_element {
+    display: none;
 }
 
 /* Mobile First */
@@ -1121,5 +1146,9 @@ iframe {
 
     .preview-container {
         display: block;
+    }
+    
+    .elementImage {
+        width: 35rem;
     }
 }

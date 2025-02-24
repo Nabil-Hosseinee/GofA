@@ -1,95 +1,84 @@
-// Code pour téléphone
-const burgerMenu = document.querySelector('.burger-menu');
-const nav = document.querySelector('.nav');
-const navLinks = document.querySelectorAll('.nav a');
-
-burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active');
-    nav.classList.toggle('navActive');
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        burgerMenu.classList.remove('active');
-        nav.classList.remove('navActive');
-    });
-});
-
-
-/* Script filtre mobile et pc */
 document.addEventListener("DOMContentLoaded", function () {
-    // Gestion du filtre principal (Runes, Personnages, Map)
-    document.querySelectorAll(".filtre").forEach(filtre => {
+    const burgerMenu = document.querySelector(".burger-menu");
+    const nav = document.querySelector(".nav");
+    const navLinks = document.querySelectorAll(".nav a");
+    const filtres = document.querySelectorAll(".filtre");
+    const elements = document.querySelectorAll(".element");
+    const runeOptions = document.querySelectorAll(".rune-option");
+    const form = document.getElementById("contactForm");
+
+    // Gestion du menu burger
+    burgerMenu?.addEventListener("click", () => {
+        burgerMenu.classList.toggle("active");
+        nav.classList.toggle("navActive");
+    });
+    
+    navLinks.forEach(link => link.addEventListener("click", () => {
+        burgerMenu.classList.remove("active");
+        nav.classList.remove("navActive");
+    }));
+
+    // Gestion du filtre principal
+    filtres.forEach(filtre => {
         filtre.addEventListener("click", function () {
             document.querySelector(".filtreActive")?.classList.remove("filtreActive");
-            this.classList.add("filtreActive");
-
             document.querySelector(".filtreNameActive")?.classList.remove("filtreNameActive");
-            this.querySelector(".filtreName").classList.add("filtreNameActive");
+            this.classList.add("filtreActive");
+            this.querySelector(".filtreName")?.classList.add("filtreNameActive");
 
-            let selectedCategory = this.dataset.category;
-            
-            document.querySelectorAll(".content").forEach(content => {
-                content.classList.remove("contentActive");
-            });
-
-            document.getElementById(selectedCategory).classList.add("contentActive");
+            document.querySelectorAll(".content").forEach(content => content.classList.remove("contentActive"));
+            document.getElementById(this.dataset.category)?.classList.add("contentActive");
         });
     });
 
-    // Gestion des éléments internes (Personnages, Runes, Zones)
-    document.querySelectorAll('.element').forEach(element => {
-        element.addEventListener('click', function() {
-            // Récupérer la catégorie de l'élément
+    // Gestion des éléments internes
+    elements.forEach(element => {
+        element.addEventListener("click", function () {
             let category = this.dataset.category;
-        
-            // Retirer la classe active de l'élément actuellement actif (si présent)
-            const activeElement = document.querySelector(`.elementActive[data-category="${category}"]`);
-            if (activeElement) {
-                activeElement.classList.remove("elementActive");
-            }
-        
-            // Ajouter la classe active à l'élément cliqué
+
+            document.querySelector(`.elementActive[data-category="${category}"]`)?.classList.remove("elementActive");
+            document.querySelector(`.descriptionActive[data-category="${category}"]`)?.classList.remove("descriptionActive");
+            
             this.classList.add("elementActive");
-        
-            // Retirer la classe active de la description actuellement active
-            const activeDescription = document.querySelector(`.descriptionActive[data-category="${category}"]`);
-            if (activeDescription) {
-                activeDescription.classList.remove("descriptionActive");
-            }
-        
-            // Ajouter la classe active à la description associée à l'élément
-            const targetDescription = document.querySelector(`.${this.dataset.target}`);
-            // Vérifie si targetDescription est bien trouvé
-            if (targetDescription) {
-                targetDescription.classList.add("descriptionActive");
-            } else {
-                console.error("La description cible n'a pas été trouvée !");
-            }
+            document.querySelector(`.${this.dataset.target}`)?.classList.add("descriptionActive");
         });
     });
-});
 
-/* Script pour les runes de la section contact */
-// Effet de brillance sur les runes au survol
-document.querySelectorAll('.rune-option').forEach(rune => {
-    rune.addEventListener('mouseover', function() {
-        this.style.transform = 'scale(1.1) translateY(-5px)';
-        this.style.filter = 'brightness(1.2)';
+    // Effet de survol sur les runes
+    runeOptions.forEach(rune => {
+        rune.addEventListener("mouseover", () => {
+            rune.style.transform = "scale(1.1) translateY(-5px)";
+            rune.style.filter = "brightness(1.2)";
+        });
+        rune.addEventListener("mouseout", () => {
+            rune.style.transform = "scale(1)";
+            rune.style.filter = "brightness(1)";
+        });
     });
 
-    rune.addEventListener('mouseout', function() {
-        this.style.transform = 'scale(1)';
-        this.style.filter = 'brightness(1)';
+    // Gestion de la sélection des runes
+    runeOptions.forEach(option => {
+        option.addEventListener("click", function () {
+            runeOptions.forEach(opt => opt.classList.remove("selected"));
+            this.classList.add("selected");
+            document.querySelector(".preview-element").textContent = this.textContent.trim();
+        });
+    });
+
+    // Mise à jour de l'aperçu du formulaire
+    const updatePreview = (input, previewClass) => {
+        document.querySelector(previewClass).textContent = input.value;
+    };
+
+    document.getElementById("name")?.addEventListener("input", (e) => updatePreview(e.target, ".preview-name"));
+    document.getElementById("email")?.addEventListener("input", (e) => updatePreview(e.target, ".preview-email"));
+    document.getElementById("message")?.addEventListener("input", (e) => updatePreview(e.target, ".preview-message"));
+
+    // Gestion de la soumission du formulaire
+    form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+        setTimeout(() => successMessage.style.display = "none", 3000);
     });
 });
-
-const runeOptions = document.querySelectorAll('.rune-option');
-runeOptions.forEach(option => {
-    option.addEventListener('click', function() {
-        runeOptions.forEach(opt => opt.classList.remove('selected'));
-        this.classList.add('selected');
-        updatePreview();
-    });
-});
-
