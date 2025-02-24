@@ -598,7 +598,7 @@ iframe {
 .elementImage {
     width: 10rem;
     aspect-ratio: 1/1;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -664,19 +664,19 @@ iframe {
     background-image: url(/assets/images/personnage/gardien.png);
 }
 
-#ile {
+#ile, .elementIle {
     background-image: url(/assets/images/decors/ile.png);
 }
 
-#volcan {
+#volcan, .elementVolcan{
     background-image: url(/assets/images/decors/volcan.png);
 }
 
-#grotte {
+#grotte, .elementGrotte {
     background-image: url(/assets/images/decors/grotte.png);
 }
 
-#foret {
+#foret, .elementForet {
     background-image: url(/assets/images/decors/foret.png);
 }
 
