@@ -800,16 +800,33 @@ iframe {
 
 
 /* Contact section */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+}
+
+.contact-container {
+    display: flex;
+    gap: 5rem;
+    width: 100%;
+}
+
 .contactContainer {
     display: flex;
     flex-direction: column;
     gap: 5rem;
-    max-width: 120rem;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
 
 /* Formulaire */
+.contact {
+    display: flex;
+}
+
 .contact-form {
     flex: 1;
     padding: 3rem 2rem;
@@ -924,6 +941,59 @@ iframe {
 
 .submit-btn:hover {
     transform: translateY(-0.3rem);
+}
+
+/* Prévisualisation PC uniquement */
+.preview-container {
+    min-width: 50%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    display: none;
+}
+
+.preview-container h3 {
+    color: #fff;
+    margin-top: 0;
+}
+
+.preview-content {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.preview-element {
+    font-size: 24px;
+}
+
+.preview-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.preview-email {
+    color: #888;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.preview-message {
+    white-space: pre-wrap;
+    color: #fff;
 }
 
 /* Messages de succès/erreur */
@@ -1047,5 +1117,9 @@ iframe {
 
     section:not(:nth-child(1)) {
         padding: 10rem;
-     }
+    }
+
+    .preview-container {
+        display: block;
+    }
 }
