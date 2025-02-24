@@ -9,6 +9,22 @@
 </head>
 <body>
     <section class="home" id="home">
+         <!-- L'élément audio - remplacez "votre-son.mp3" par le chemin vers votre fichier audio -->
+        <audio id="monAudio" src="/assets/sounds/son.mp3" loop></audio>
+
+        <!-- Le bouton de contrôle -->
+        <button class="sound-button" id="soundButton" aria-label="Contrôle du son">
+            <svg viewBox="0 0 24 24">
+            <path d="M11 5L6 9H2v6h4l5 4V5z" />
+            <g class="sound-waves">
+                <path d="M15 8a5 5 0 0 1 0 8" />
+                <path d="M18 5a9 9 0 0 1 0 14" />
+            </g>
+            <line class="mute-line" x1="23" y1="1" x2="1" y2="23" />
+            </svg>
+        </button>
+
+
         <div class="overlay"></div>
         <nav class="nav">
             <a href="#home">Accueil</a>
@@ -173,21 +189,21 @@
                 </div>
 
                 <!-- Mettre une data-category="zone"  & les descriptions-->
-                <div class="elementDescription ileDescription descriptionActive">
+                <div class="elementDescription ileDescription descriptionActive" data-category="zone">
                     <h3>Île flottant</h3>
-                    <p>Description de l'île flottante...</p>
+                    <p>Une île suspendue dans les airs, mystérieuse et accessible uniquement par un portail magique. Elle abrite la rune d'air, symbolisant la liberté et la légèreté.</p>
                 </div>
-                <div class="elementDescription volcanDescription">
+                <div class="elementDescription volcanDescription" data-category="zone">
                     <h3>Volcan</h3>
-                    <p>Description du volcan...</p>
+                    <p>Un volcan actif, rugissant de chaleur et de lave, où la rune de feu repose dans son cœur incandescent, gardée par des créatures de feu.</p>
                 </div>
-                <div class="elementDescription grotteDescription">
+                <div class="elementDescription grotteDescription" data-category="zone">
                     <h3>Grotte</h3>
-                    <p>Description de la grotte...</p>
+                    <p>Une grotte profonde et ombragée, cachant la rune d'eau. Ses murs résonnent des murmures des courants souterrains, abritant de secrets anciens.</p>
                 </div>
-                <div class="elementDescription foreteDescription">
+                <div class="elementDescription foretDescription" data-category="zone">
                     <h3>Fôret</h3>
-                    <p>Description de la fôret...</p>
+                    <p>Une forêt dense, où la nature règne en maître. La rune de terre y est enfouie, protégée par la végétation et les créatures sylvestres.</p>
                 </div>
             </div>
         </div>

@@ -81,4 +81,29 @@ document.addEventListener("DOMContentLoaded", function () {
         successMessage.style.display = "block";
         setTimeout(() => successMessage.style.display = "none", 3000);
     });
+
+    const audio = document.getElementById('monAudio');
+    const button = document.getElementById('soundButton');
+    
+    // État initial
+    let isMuted = true;
+    audio.muted = true;
+    button.classList.add('muted');
+
+    // Gestion du clic
+    button.addEventListener('click', function() {
+      isMuted = !isMuted;
+      
+      if (isMuted) {
+        audio.muted = true;
+        audio.pause();
+        button.classList.add('muted');
+        button.setAttribute('aria-label', 'Activer le son');
+      } else {
+        audio.muted = false;
+        audio.play();
+        button.classList.remove('muted');
+        button.setAttribute('aria-label', 'Désactiver le son');
+      }
+    });
 });

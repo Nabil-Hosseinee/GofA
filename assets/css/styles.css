@@ -89,31 +89,57 @@ a {
     background-color: var(--violet);
 }
 
-/* Style du sélecteur de langue */
-.language-switch {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
-}
-
-.language-switch button {
-    background: none;
+/* Sound Button */
+.sound-button {
+    background: white;
     border: none;
     cursor: pointer;
-}
+    padding: 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    z-index: 9999;
+  }
 
-.language-switch img {
-    width: 30px;
-    height: 20px;
-}
+  .sound-button:hover {
+    background-color: #f0f0f0;
+  }
 
-/* Cacher le widget Google Translate par défaut */
-#google_translate_element {
-    display: none;
-}
+  .sound-button svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sound-waves {
+    transition: opacity 0.3s;
+  }
+
+  .sound-button.muted .sound-waves {
+    opacity: 0;
+  }
+
+  .mute-line {
+    stroke: #333;
+    stroke-width: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .sound-button.muted .mute-line {
+    opacity: 1;
+  }
 
 /* Mobile First */
 
@@ -594,7 +620,7 @@ iframe {
 .element {
     width: 5rem;
     aspect-ratio: 1/1;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -638,6 +664,21 @@ iframe {
     background-image: url(/assets/images/personnage/gardien.png);
 }
 
+#ile {
+    background-image: url(/assets/images/decors/ile.png);
+}
+
+#volcan {
+    background-image: url(/assets/images/decors/volcan.png);
+}
+
+#grotte {
+    background-image: url(/assets/images/decors/grotte.png);
+}
+
+#foret {
+    background-image: url(/assets/images/decors/foret.png);
+}
 
 
 /* Team section  */
@@ -1106,6 +1147,11 @@ iframe {
 }
 
 @media (min-width: 800px) {
+    .sound-button {
+        top: 6rem;
+        left: 6rem;
+    }
+
     .burger-menu {
         right: 6rem;
     }
