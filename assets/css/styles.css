@@ -54,6 +54,42 @@ a {
     text-decoration: none;
 }
 
+
+.buttonsContainer {
+    min-height: 15vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.btn {
+    width: 20rem;
+    padding: 2rem 0;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    transition: all .3s ease;
+    color: white;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.dlBtn {
+    background-color: var(--bleu);
+}
+
+.trBtn {
+    background-color: var(--violet);
+}
+
 /* Mobile First */
 
 /* Home section */
@@ -362,6 +398,7 @@ h1 {
     /* transform: perspective(1000px) rotateY(-15deg); */
     transition: transform 0.5s ease;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin: auto;
 }
 
 /* A ajouter pour les PC dans les medias */
@@ -991,3 +1028,24 @@ iframe {
     }
 }
 
+@media (min-width: 1280px) {
+    header {
+        display: none;
+    }
+
+    h1 {
+        padding: 0 50rem;
+    }
+
+    .buttonsContainer {
+        display: flex;
+    }
+
+    .video-wrapper {
+        width: 70rem;
+    }
+
+    section:not(:nth-child(1)) {
+        padding: 10rem;
+     }
+}
