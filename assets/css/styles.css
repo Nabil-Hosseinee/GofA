@@ -977,14 +977,15 @@ video {
 .preview-content {
     margin-top: 20px;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     min-height: 200px;
 }
 
 .preview-header {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -996,6 +997,7 @@ video {
 .preview-name {
     font-weight: bold;
     font-size: 1.1em;
+    padding-left: 7px;
 }
 
 .preview-email {

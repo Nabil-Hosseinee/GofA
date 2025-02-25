@@ -6,13 +6,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll(".element");
     const runeOptions = document.querySelectorAll(".rune-option");
     const form = document.getElementById("contactForm");
+    const previewContainer = document.querySelector(".preview-container");
+    const previewElement = document.querySelector(".preview-element");
+
+    const runeColors = {
+        feu: "#ff5733", // Rouge feu
+        eau: "#3399ff", // Bleu eau
+        terre: "#4CAF50", // Vert terre
+        air: "#cccccc" // Gris air
+    };
 
     // Gestion du menu burger
     burgerMenu?.addEventListener("click", () => {
         burgerMenu.classList.toggle("active");
         nav.classList.toggle("navActive");
     });
-    
+
     navLinks.forEach(link => link.addEventListener("click", () => {
         burgerMenu.classList.remove("active");
         nav.classList.remove("navActive");
@@ -38,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelector(`.elementActive[data-category="${category}"]`)?.classList.remove("elementActive");
             document.querySelector(`.descriptionActive[data-category="${category}"]`)?.classList.remove("descriptionActive");
-            
+
             this.classList.add("elementActive");
             document.querySelector(`.${this.dataset.target}`)?.classList.add("descriptionActive");
         });
@@ -61,7 +70,11 @@ document.addEventListener("DOMContentLoaded", function () {
         option.addEventListener("click", function () {
             runeOptions.forEach(opt => opt.classList.remove("selected"));
             this.classList.add("selected");
-            document.querySelector(".preview-element").textContent = this.textContent.trim();
+            previewElement.textContent = this.textContent.trim();
+
+            // Changement de la couleur de la boîte de prévisualisation
+            const element = this.getAttribute("data-element");
+            previewContainer.style.backgroundColor = runeColors[element];
         });
     });
 
@@ -92,18 +105,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Gestion du clic
     button.addEventListener('click', function() {
-      isMuted = !isMuted;
-      
-      if (isMuted) {
-        audio.muted = true;
-        audio.pause();
-        button.classList.add('muted');
-        button.setAttribute('aria-label', 'Activer le son');
-      } else {
-        audio.muted = false;
-        audio.play();
-        button.classList.remove('muted');
-        button.setAttribute('aria-label', 'Désactiver le son');
-      }
+        isMuted = !isMuted;
+        
+        if (isMuted) {
+            audio.muted = true;
+            audio.pause();
+            button.classList.add('muted');
+            button.setAttribute('aria-label', 'Activer le son');
+        } else {
+            audio.muted = false;
+            audio.play();
+            button.classList.remove('muted');
+            button.setAttribute('aria-label', 'Désactiver le son');
+        }
     });
 });
